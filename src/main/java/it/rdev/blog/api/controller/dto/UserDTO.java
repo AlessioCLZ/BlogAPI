@@ -1,10 +1,15 @@
 package it.rdev.blog.api.controller.dto;
 
+import java.util.List;
+
 public class UserDTO {
 	
 	private Integer id;
 	private String username;
+	private String email;
 	private String password;
+	private List<PostDTO> posts;
+	private List<CommentDTO> comments;
 
 	public Integer getId() {
 		return id;
@@ -29,4 +34,30 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<PostDTO> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<PostDTO> posts) {
+		this.posts = posts;
+	}
+
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
+	}
+	
+	
 }
