@@ -3,6 +3,7 @@ package it.rdev.blog.api.dao.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,13 +15,16 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name= "posts")
 public class Post {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Integer id;
 	
 	@Column(nullable=false)
 	private String title;
@@ -31,20 +35,20 @@ public class Post {
 	@Column(nullable=false)
 	private String text;
 	
-	@Column
 	@ManyToOne
+	@JsonManagedReference
 	private User user;
 	
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate insertionDate;
 	
-	@Column
-	@OneToMany(mappedBy= "post")
+	@OneToMany(mappedBy= "post", cascade= CascadeType.ALL)
+	@JsonBackReference
 	private List<Tag> tags;
 	
-	@Column
-	@OneToMany(mappedBy="post")
+	@OneToMany(mappedBy="post", cascade= CascadeType.ALL)
+	@JsonBackReference
 	private List<Comment> comments;
 
 	public String getTitle() {
@@ -103,13 +107,13 @@ public class Post {
 		this.comments = comments;
 	}
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	
 }

@@ -10,7 +10,8 @@ spring:
   jpa:
     show-sql: true
     format-sql: true
-
+    hibernate:
+      ddl-auto: update
 jwt:
   token:
     type: Bearer

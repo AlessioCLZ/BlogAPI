@@ -1,5 +1,6 @@
 package it.rdev.blog.api.dao.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
@@ -21,15 +22,12 @@ public class User {
 	@JsonIgnore
 	private String password;
 	
-	@Column
-	private String email;
-	
-	@Column
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade= CascadeType.ALL)
+	@JsonBackReference
 	private List<Post> posts;
 	
-	@Column
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade= CascadeType.ALL)
+	@JsonBackReference
 	private List<Comment> comments;
 
 	//getters and setters
@@ -66,14 +64,6 @@ public class User {
 		this.password = password;
 	}
 	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public List<Comment> getComments() {
 		return comments;
 	}

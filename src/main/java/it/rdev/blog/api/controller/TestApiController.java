@@ -16,7 +16,7 @@ public class TestApiController {
 
 	@GetMapping({ "/api/test" })
 	public String get() {
-		return "Risorsa Accesibile";
+		return "Risorsa Accessibile";
 	}
 	
 	@PostMapping({ "/api/test" })

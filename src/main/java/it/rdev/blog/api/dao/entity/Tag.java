@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name= "tags")
 public class Tag {
@@ -19,8 +21,8 @@ public class Tag {
 	@Column(nullable=false, length=20)
 	private String text;
 	
-	@Column
 	@ManyToOne
+	@JsonManagedReference
 	private Post post;
 
 	public String getText() {

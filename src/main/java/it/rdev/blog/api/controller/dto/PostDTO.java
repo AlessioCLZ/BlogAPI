@@ -3,22 +3,26 @@ package it.rdev.blog.api.controller.dto;
 import java.time.LocalDate;
 import java.util.List;
 
+import it.rdev.blog.api.dao.entity.Comment;
+import it.rdev.blog.api.dao.entity.Tag;
+import it.rdev.blog.api.dao.entity.User;
+
 public class PostDTO {
 
 	private Integer id;
 	private String title;
 	private String subTitle;
 	private String text;
-	private UserDTO user;
+	private User user;
 	private LocalDate insertionDate;
-	private List<TagDTO> tags;
-	private List<CommentDTO> comments;
+	private List<Tag> tags;
+	private List<Comment> comments;
 	
 	public Integer getId() {
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer l) {
+		this.id = l;
 	}
 	public String getTitle() {
 		return title;
@@ -38,11 +42,11 @@ public class PostDTO {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public UserDTO getUser() {
+	public User getUser() {
 		return user;
 	}
-	public void setUser(UserDTO user) {
-		this.user = user;
+	public void setUser(User user2) {
+		this.user = user2;
 	}
 	public LocalDate getInsertionDate() {
 		return insertionDate;
@@ -50,16 +54,16 @@ public class PostDTO {
 	public void setInsertionDate(LocalDate insertionDate) {
 		this.insertionDate = insertionDate;
 	}
-	public List<TagDTO> getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
-	public void setTags(List<TagDTO> tags) {
-		this.tags = tags;
+	public void setTags(List<Tag> list) {
+		this.tags = list;
 	}
-	public List<CommentDTO> getComments() {
+	public List<Comment> getComments() {
 		return comments;
 	}
-	public void setComments(List<CommentDTO> comments) {
-		this.comments = comments;
+	public void setComments(List<Comment> list) {
+		this.comments = list;
 	}
 }

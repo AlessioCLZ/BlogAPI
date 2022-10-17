@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name= "comments")
 public class Comment {
@@ -22,12 +24,12 @@ public class Comment {
 	@Column(nullable=false)
 	private String text;
 	
-	@Column(nullable=false)
 	@ManyToOne
+	@JsonManagedReference
 	private User user;
 	
-	@Column
 	@ManyToOne
+	@JsonManagedReference
 	private Post post;
 
 	public long getId() {
